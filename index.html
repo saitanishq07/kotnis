@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kotnis Engineering | Interior Design Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Work+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #0a0a0a;
+            --secondary-grey: #e8e8e8;
+            --mid-grey: #666;
+            --light-grey: #f5f5f5;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--white);
+            color: var(--primary-black);
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--primary-black);
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            max-height: 50px;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-black);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-black);
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary-black);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), 
+                        url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+            max-width: 900px;
+            width: 90%;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--secondary-grey);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 200;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--white);
+            color: var(--primary-black);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            border: 1px solid var(--white);
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--light-grey);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--mid-grey);
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 5%;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--mid-grey);
+            font-size: 1.1rem;
+            margin-bottom: 5rem;
+            font-weight: 300;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--light-grey);
+            padding: 3rem 2rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-black);
+            transition: left 0.4s ease;
+            z-index: 1;
+        }
+
+        .service-card:hover::before {
+            left: 0;
+        }
+
+        .service-card:hover .service-content {
+            color: var(--white);
+        }
+
+        .service-content {
+            position: relative;
+            z-index: 2;
+            transition: color 0.4s ease;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .service-description {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--mid-grey);
+            transition: color 0.4s ease;
+        }
+
+        .service-card:hover .service-description {
+            color: var(--secondary-grey);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 8rem 5%;
+            background: var(--primary-black);
+            color: var(--white);
+        }
+
+        .process .section-title {
+            color: var(--white);
+        }
+
+        .process .section-subtitle {
+            color: var(--secondary-grey);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .step:nth-child(1) { animation-delay: 0.2s; }
+        .step:nth-child(2) { animation-delay: 0.4s; }
+        .step:nth-child(3) { animation-delay: 0.6s; }
+
+        .step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6rem;
+            font-weight: 300;
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .step-description {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--secondary-grey);
+            font-weight: 300;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 8rem 5%;
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: grayscale(100%);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-text {
+            color: var(--white);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        .load-more-container {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .load-more-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--primary-black);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            border: 1px solid var(--primary-black);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .load-more-btn:hover {
+            background: transparent;
+            color: var(--primary-black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .load-more-btn.hidden {
+            display: none;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 8rem 5%;
+            background: var(--white);
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+            background: var(--white);
+            border: 2px solid #999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .testimonials-container .section-title {
+            margin-bottom: 1rem;
+        }
+
+        .testimonials-container .section-subtitle {
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border: 2px solid #999;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        .testimonial-info h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.85rem;
+            color: var(--mid-grey);
+            font-weight: 300;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--mid-grey);
+            font-weight: 300;
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            padding: 8rem 5%;
+            background: var(--white);
+        }
+
+        .contact-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--light-grey);
+            padding: 4rem;
+            border: 1px solid #ddd;
+        }
+
+        .contact-form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-black);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--primary-black);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input,
+        .form-textarea {
+            padding: 0.9rem 1rem;
+            border: 2px solid #999;
+            background: var(--white);
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--primary-black);
+            transition: all 0.3s ease;
+            outline: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: var(--primary-black);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary-black);
+            color: var(--white);
+            border: none;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: #2a2a2a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn::before {
+            content: '◆';
+            font-size: 0.8rem;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            padding: 8rem 5%;
+            background: var(--light-grey);
+        }
+
+        .artist-section {
+            padding: 8rem 5%;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                        url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .artist-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            padding: 3rem;
+            background: var(--white);
+            border: 2px solid #999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .artist-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: var(--white);
+            width: 280px;
+            height: 350px;
+        }
+
+        .artist-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+            transition: all 0.6s ease;
+        }
+
+        .artist-image:hover {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .artist-content {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .artist-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-black);
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .artist-title {
+            font-size: 0.95rem;
+            color: var(--mid-grey);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .artist-bio p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--mid-grey);
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+            text-align: left;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .feature-description {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--mid-grey);
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-black);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--secondary-grey);
+            font-weight: 300;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--secondary-grey);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--secondary-grey);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        /* Extra Small Screens (320px - 480px) */
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+            }
+
+            .logo img {
+                max-height: 35px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                padding: 1rem 4%;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                gap: 0;
+                padding: 1rem 0;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid #e8e8e8;
+                font-size: 0.9rem;
+                min-height: 48px;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .hero {
+                background-attachment: scroll;
+                min-height: 80vh;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+                width: 95%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                letter-spacing: 1px;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 0.75rem 2rem;
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+                min-height: 48px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 3rem 4%;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            body {
+                font-size: 14px;
+            }
+
+            .services,
+            .process,
+            .contact {
+                padding: 4rem 4%;
+            }
+
+            .services-grid,
+            .process-steps,
+            .gallery-grid,
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 2rem 4%;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+
+            .contact-form-title {
+                font-size: 1.5rem;
+            }
+
+            .artist-name {
+                font-size: 1.5rem;
+            }
+
+            .artist-container {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+
+            .artist-image-wrapper {
+                width: 100%;
+                height: 250px;
+                margin: 0 auto;
+            }
+
+            .testimonials-container {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Small Screens (481px - 768px) */
+        @media (max-width: 768px) and (min-width: 481px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                padding: 1.2rem 4%;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                gap: 0;
+                padding: 0.5rem 0;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #e8e8e8;
+                font-size: 0.9rem;
+                min-height: 48px;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .hero {
+                background-attachment: scroll;
+                min-height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                letter-spacing: 2px;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+                margin-bottom: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                padding: 4rem 4%;
+            }
+
+            .stats > .stat-item:last-child {
+                grid-column: 1 / -1;
+                max-width: 50%;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .process-steps,
+            .gallery-grid,
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-container {
+                padding: 2rem;
+            }
+
+            .contact-form-title {
+                font-size: 2rem;
+            }
+
+            .artist-name {
+                font-size: 1.8rem;
+            }
+
+            .artist-container {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 2rem;
+            }
+
+            .artist-image-wrapper {
+                width: 100%;
+                height: 300px;
+                margin: 0 auto;
+            }
+
+            .testimonials-container {
+                padding: 2rem;
+            }
+        }
+
+        /* Tablets and Up (769px+) */
+        @media (min-width: 769px) {
+            .hero {
+                background-attachment: fixed;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo"><img src="images/logo.png" alt=""></div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Designing Elegance</h1>
+            <p>Step into a world where the art of Interior Design is meticulously crafted to bring together timeless elegance and cutting-edge modern innovation, transforming your living spaces into the epitome of luxury and sophistication.</p>
+            <a href="#contact" class="cta-button">GET A QUOTE</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">PROJECTS COMPLETE</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">495+</div>
+            <div class="stat-label">SATISFIED CLIENTS</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">UNIQUE STYLES</div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title">What We Offer</h2>
+        <p class="section-subtitle">Comprehensive design solutions tailored to your vision</p>
+        
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-content">
+                    <div class="service-icon">◆</div>
+                    <h3 class="service-title">Interior Design</h3>
+                    <p class="service-description">From concept to completion, we oversee every detail to bring your vision to life efficiently with meticulous attention to aesthetics and functionality.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-content">
+                    <div class="service-icon">◇</div>
+                    <h3 class="service-title">Exterior Design</h3>
+                    <p class="service-description">Transforming outdoor spaces with creative, functional, and sustainable design solutions tailored to your needs and environmental context.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-content">
+                    <div class="service-icon">◆</div>
+                    <h3 class="service-title">Architectural Design</h3>
+                    <p class="service-description">Crafting unique, visionary designs that blend aesthetics with functionality to create lasting impressions and timeless structures.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-content">
+                    <div class="service-icon">◇</div>
+                    <h3 class="service-title">3D View Renders</h3>
+                    <p class="service-description">Bringing your ideas to life with realistic, detailed 3D visualizations for better design understanding and decision-making.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-content">
+                    <div class="service-icon">◆</div>
+                    <h3 class="service-title">Custom Furniture</h3>
+                    <p class="service-description">Designing bespoke furniture tailored to your style and space for ultimate functionality, beauty, and personal expression.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-content">
+                    <div class="service-icon">◇</div>
+                    <h3 class="service-title">Lightning Design</h3>
+                    <p class="service-description">Achieve the perfect balance of ambient, task, and accent lighting for a functional and atmospheric living environment.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-content">
+                    <div class="service-icon">◆</div>
+                    <h3 class="service-title">Renovation</h3>
+                    <p class="service-description">Revitalizing spaces with expert renovations that blend modern design with your existing style and structural integrity.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-content">
+                    <div class="service-icon">◇</div>
+                    <h3 class="service-title">Turnkey Services</h3>
+                    <p class="service-description">Offering end-to-end services, from concept to completion, ensuring a seamless and stress-free experience for every project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <h2 class="section-title">Designing Your Dream in Three Simple Steps</h2>
+        <p class="section-subtitle">Our streamlined process for exceptional results</p>
+        
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3 class="step-title">Start Project</h3>
+                <p class="step-description">Embark on your design adventure by initiating your project. Share your vision and set the stage for a bespoke design experience.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3 class="step-title">Craft</h3>
+                <p class="step-description">Collaborate closely to achieve design excellence, refining your vision and crafting brilliance into every aspect of your space.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3 class="step-title">Execute</h3>
+                <p class="step-description">Witness your vision becoming a reality as we execute the design plan with precision. Celebrate the joy of your newly transformed space.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="portfolio" class="gallery">
+        <h2 class="section-title">Portfolio</h2>
+        <p class="section-subtitle">Explore our exceptional design work</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <img src="images/img_1.jpg" alt="Modern Living Room">
+                
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="images/img_2.jpg" alt="Luxury Bedroom">
+                
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="images/img_3.jpg" alt="Contemporary Kitchen">
+                
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="images/img_4.jpg" alt="Minimalist Office">
+                
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="images/img_5.jpg" alt="Elegant Dining">
+                
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="images/img_6.jpg" alt="Exterior Design">
+                
+            </div>
+
+            <!-- Hidden Gallery Items (Load More) -->
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_7.jpg" alt="Bathroom Design">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_8.jpg" alt="Living Space">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_9.jpg" alt="Modern Interior">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_10.jpg" alt="Kitchen Design">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_11.jpg" alt="Home Office">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_12.jpg" alt="Outdoor Living">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_13.jpg" alt="Luxury Interior">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_14.jpg" alt="Modern Apartment">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_15.jpg" alt="Minimalist Bedroom">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_16.jpg" alt="Cozy Living Room">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_17.jpg" alt="Contemporary Space">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_18.jpg" alt="Elegant Design">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_19.jpg" alt="Modern Workspace">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_20.jpg" alt="Stylish Interior">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_21.jpg" alt="Chic Living Area">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_22.jpg" alt="Designer Kitchen">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_23.jpg" alt="Sophisticated Room">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_24.jpg" alt="Luxury Bathroom">
+            </div>
+
+            <div class="gallery-item fade-in hidden">
+                <img src="images/img_25.jpg" alt="Refined Space">
+            </div>
+        </div>
+
+        <div class="load-more-container">
+            <button class="load-more-btn" id="loadMoreBtn">LOAD MORE</button>
+        </div>
+    </section>
+
+    <!-- Meet The Artist Section -->
+    <section id="about" class="artist-section">
+        <h2 class="section-title">Meet The Artist</h2>
+        
+        <div class="artist-container">
+            <div class="artist-image-wrapper fade-in">
+                <img src="images/artist.jpg" alt="Dr. Neelsh Kotnis" class="artist-image">
+            </div>
+            
+            <div class="artist-content fade-in">
+                <h3 class="artist-name">DR. NEELSH KOTNIS</h3>
+                <p class="artist-title">Managing Director, Kotnis Engineering</p>
+                
+                <div class="artist-bio">
+                    <p>Dr. Neelesh Kotnis, the visionary behind Kotnis Engineering, is a highly accomplished professional with a Bachelor's degree in Civil Engineering, an MBA in Finance, and a PhD in Civil Engineering. With a profound understanding of infrastructure development, he has become a key figure in modern India's construction landscape.</p>
+                    
+                    <p>Dr. Kotnis' expertise spans the entire construction process, from managing on-site operations to ensuring projects are completed within time and budget constraints. His strong leadership skills are complemented by his ability to effectively liaise with government agencies, clients, architects, consultants, and vendors. He oversees everything from determining technical specifications and land requirements to obtaining approvals and statutory clearances.</p>
+                    
+                    <p>His passion for excellence and commitment to delivering high-quality results have been the driving force behind the growth and success of Kotnis Engineering, making it a trusted name in the interior design and construction industry.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 6rem;">
+            <h2 class="section-title" style="margin-bottom: 3rem;">Why Choose Kotnis Engineering</h2>
+            
+            <div class="features-grid">
+                <div class="feature fade-in">
+                    <h3 class="feature-title">Expertise & Experience</h3>
+                    <p class="feature-description">With years of industry experience, we provide high-quality, innovative engineering solutions tailored to your needs.</p>
+                </div>
+
+                <div class="feature fade-in">
+                    <h3 class="feature-title">Customized Solutions</h3>
+                    <p class="feature-description">Every project is unique. We create personalized designs that reflect your individual style and aspirations.</p>
+                </div>
+
+                <div class="feature fade-in">
+                    <h3 class="feature-title">Commitment to Quality</h3>
+                    <p class="feature-description">We maintain the highest standards in every aspect, ensuring exceptional results that stand the test of time.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem;">
+                <p style="max-width: 900px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; color: var(--mid-grey); font-weight: 300;">
+                    At Kotnis Engineering, we specialize in creating innovative and functional interior designs, seamlessly blending creativity and precision to transform your spaces into beautiful, personalized environments that reflect your unique style and needs.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title">What Our Customers Say About Us</h2>
+            <p class="section-subtitle">Real experiences from our satisfied clients</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="Arvind Sharma" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Arvind Sharma</h4>
+                            <p>CEO of Innovatech Solutions</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"We recently worked with Kotnis Engineering for a complete interior renovation of our office, and the results exceeded our expectations. The team was professional, attentive to our needs, and delivered on time. Our new space is functional, stylish, and reflects our brand perfectly. Highly recommend their services!"</p>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80" alt="Priya Kapoor" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Priya Kapoor</h4>
+                            <p>Homeowner</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"I had the pleasure of working with Kotnis Engineering for my home's interior design, and it was a fantastic experience. They listened carefully to my vision and provided creative solutions that transformed my space. The execution was flawless, and the attention to detail was outstanding. I couldn't be happier with the final result!"</p>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" alt="Rajeev Desai" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Rajeev Desai</h4>
+                            <p>Marketing Head at Vistara Designs</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The team at Kotnis Engineering truly understands design and execution. They worked on redesigning our living room and dining area, and the transformation was amazing. The materials used were of the highest quality, and their project management ensured everything was completed on schedule. I would definitely work with them again!"</p>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Meera Daisal" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Meera Daisal</h4>
+                            <p>Owner of The Spice House</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"I had a wonderful experience working with Kotnis Engineering on my restaurant's interior. From the initial consultation to the final installation, they were creative, professional, and always kept me informed throughout the process. They transformed my space into something that is both welcoming and functional. I highly recommend them!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="contact-form-container">
+            <h2 class="contact-form-title">Get Into Touch with Us</h2>
+            <form id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-input" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-input" placeholder="Last Name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Contact</label>
+                        <input type="tel" class="form-input" placeholder="Contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="Email" required>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-textarea" placeholder="Message" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">SUBMIT FORM</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kotnis Engineering</h3>
+                <p>Elevate your spaces with bespoke interior designs that reflect your unique style and aspirations, crafted with precision and brilliance for an unforgettable living experience.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Useful Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Antop Hill Warehousing Complex<br>
+                Vidyalankar College Marg<br>
+                Wadala East, Mumbai 400037<br>
+                INDIA</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Copyright © 2025 Kotnis Engineering, All rights reserved. Powered by Growth Architect.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Close mobile menu when scrolling
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Load More Gallery Items
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const hiddenItems = document.querySelectorAll('.gallery-item.hidden');
+        let currentIndex = 0;
+        const itemsPerBatch = 6;
+        
+        loadMoreBtn.addEventListener('click', function() {
+            // Calculate how many items to show in this batch
+            const endIndex = Math.min(currentIndex + itemsPerBatch, hiddenItems.length);
+            
+            // Show the next batch of items
+            for (let i = currentIndex; i < endIndex; i++) {
+                hiddenItems[i].classList.remove('hidden');
+                hiddenItems[i].classList.add('visible');
+            }
+            
+            // Update the current index
+            currentIndex = endIndex;
+            
+            // Hide the button if all items are loaded
+            if (currentIndex >= hiddenItems.length) {
+                loadMoreBtn.classList.add('hidden');
+            }
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation and success message
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/698f7a269dc3531c34f343ef/1jhc7a9nn';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>
